@@ -25,11 +25,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, delay }) => {
       transition={{ delay, duration: 0.5 }}
       className="p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow border border-gray-100"
     >
-      {project.image && (
-        <div className="mb-4 rounded-lg overflow-hidden">
-          <img src={project.image} alt={project.title} className="w-full h-40 object-cover" />
-        </div>
-      )}
+      
       
       <h3 className="font-bold text-lg text-gray-800">{project.title}</h3>
       
