@@ -7,17 +7,24 @@ const ProjectsPage = () => {
   const projects = [
     {
       title: "White Label Quotation Service - SaaS Website",
-      description: "A SaaS platform for generating and downloading white-label quotations.",
+      description: "A SaaS platform for generating and downloading white-label quotations.A large scale project with multiple features.",
       sourceCode: "https://github.com/quotely-co/client",
-      liveLink: "https://whitelabel-quotely.vercel.app/",
-      technologies: ["React", "Node.js", "Express", "MongoDB", "AWS", "PDF Download"]
+      liveLink: "https://quotely.shop",
+      technologies: ["React", "Node.js", "Express", "MongoDB", "AWS", "PDF Download" ,"3D Model"]
     },
     {
       title: "E-Commerce Platform",
-      description: "A full-stack e-commerce application with MERN stack.",
+      description: "A full-stack e-commerce application with MERN stack.with admin role and payment gateway integration.",
       sourceCode: "https://github.com/watchlab-co/client",
       liveLink: "https://www.watchlab.in/",
       technologies: ["MongoDB", "Express", "React", "Node.js"]
+    },
+    {
+      title: "AI Job Platform",
+      description: "An AI-powered job platform that lets users upload their resume and intelligently fetches relevant jobs from the internet using NLP. Built with modern tech stack and scalable microservices.",
+      sourceCode: "https://github.com/Shaamiilll/Jobsforce",
+      liveLink: "https://shamil-jobforce.vercel.app/",
+      technologies: ["AI", "NLP", "Python", "FastAPI", "Node.js", "React.js", "AWS"],
     },
     {
       title: "Infinity ecommerce application",
