@@ -3,7 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const SkillsSection = () => {
-  const skills = ["React", "Node.js", "MongoDB", "Express", "Next.js", "Tailwind CSS"];
+  const skills = ["React.js", "Node.js", "MongoDB", "Express.js", "Next.js", "Tailwind CSS", "AWS", "Git", "Github", "PostgreSQL", "TypeScript", "Python", "Redux" ];
 
   return (
     <motion.div
