@@ -1,5 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/react"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -47,7 +48,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="canonical" href="https://shamil-amiyan.vercel.app/" />
         <title>{metadata.title}</title>
       </head>
-      <body className={`${inter.className} bg-white text-black`}>{children}</body>
+      <body className={`${inter.className} bg-white text-black`}>
+        {children}
+        <Analytics />
+        </body>
     </html>
   );
 }
