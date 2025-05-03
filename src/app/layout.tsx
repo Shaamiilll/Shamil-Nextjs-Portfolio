@@ -1,30 +1,42 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Shamil | Portfolio - Software Engineer & Entrepreneur",
+  title: "Shamil Amiyan | Full Stack Developer & Entrepreneur",
   description:
-    "Shamil is a skilled Software Engineer & Entrepreneur specializing in full-stack development, SaaS solutions, and e-commerce platforms.",
+    "Shamil Amiyan is a skilled Full Stack Developer & Entrepreneur specializing in MERN stack development, SaaS solutions, and e-commerce platforms.",
   keywords:
-    "Software Engineer, Full-Stack Developer, SaaS Developer, Web Developer, Entrepreneur, JavaScript, React, Next.js, Node.js, PostgreSQL",
-  author: "Shamil",
+    "Shamil, Shamil A, Shamil Amiyan, Full Stack Developer, MERN Stack, Software Engineer, Entrepreneur, JavaScript, React, Next.js, Node.js, MongoDB, Express, Kerala Developer",
+  author: "Shamil Amiyan",
+  alternates: {
+    canonical: "https://shamil-amiyan.vercel.app/",
+  },
   openGraph: {
-    title: "Shamil | Portfolio - Software Engineer & Entrepreneur",
+    title: "Shamil Amiyan | Full Stack Developer & Entrepreneur",
     description:
-      "Shamil is a skilled Software Engineer & Entrepreneur specializing in full-stack development, SaaS solutions, and e-commerce platforms.",
+      "Shamil Amiyan is a skilled Full Stack Developer & Entrepreneur specializing in MERN stack development, SaaS solutions, and e-commerce platforms.",
     type: "website",
-    url: "https://shamil-amiyan.vercel.app/", // Update with your actual domain
-    image: "https://yourdomain.com/og-image.jpg", // Update with an actual image for better preview
+    url: "https://shamil-amiyan.vercel.app/",
+    images: [
+      {
+        url: "https://shamil-amiyan.vercel.app/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Shamil Amiyan - Full Stack Developer"
+      }
+    ],
+    siteName: "Shamil Amiyan Portfolio"
   },
   twitter: {
     card: "summary_large_image",
-    title: "Shamil | Portfolio - Software Engineer & Entrepreneur",
+    title: "Shamil Amiyan | Full Stack Developer & Entrepreneur",
     description:
-      "Shamil is a skilled Software Engineer & Entrepreneur specializing in full-stack development, SaaS solutions, and e-commerce platforms.",
-    image: "https://yourdomain.com/twitter-card.jpg", // Update with an actual image
+      "Shamil Amiyan is a skilled Full Stack Developer & Entrepreneur specializing in MERN stack development, SaaS solutions, and e-commerce platforms.",
+    images: ["https://shamil-amiyan.vercel.app/og-image.jpg"],
+    creator: "@YourTwitterHandle" // Add if you have one
   },
 };
 
@@ -34,24 +46,40 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="robots" content="index, follow" />
-        <meta name="author" content={metadata.author} />
-        <meta name="keywords" content={metadata.keywords} />
-        <meta property="og:title" content={metadata.openGraph.title} />
-        <meta property="og:description" content={metadata.openGraph.description} />
-        <meta property="og:type" content={metadata.openGraph.type} />
-        <meta property="og:url" content={metadata.openGraph.url} />
-        <meta property="og:image" content={metadata.openGraph.image} />
-        <meta name="twitter:card" content={metadata.twitter.card} />
-        <meta name="twitter:title" content={metadata.twitter.title} />
-        <meta name="twitter:description" content={metadata.twitter.description} />
-        <meta name="twitter:image" content={metadata.twitter.image} />
-        <link rel="canonical" href="https://shamil-amiyan.vercel.app/" />
-        <title>{metadata.title}</title>
+        
+        {/* ✅ JSON-LD Structured Data - Single source of truth */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Shamil Amiyan",
+              alternateName: ["Shamil", "Shamil A"],
+              jobTitle: "Full Stack Developer & Entrepreneur",
+              url: "https://shamil-amiyan.vercel.app/",
+              sameAs: [
+                "https://github.com/shaamiilll",
+                "https://linkedin.com/in/shamilamiyan"
+              ],
+              knowsAbout: [
+                "MERN Stack",
+                "React",
+                "Node.js",
+                "MongoDB",
+                "Express",
+                "Next.js",
+                "Tailwind CSS",
+                "Web Development"
+              ]
+            }),
+          }}
+        />
       </head>
       <body className={`${inter.className} bg-white text-black`}>
         {children}
         <Analytics />
-        </body>
+      </body>
     </html>
   );
 }
