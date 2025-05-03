@@ -8,7 +8,7 @@ const ProjectsPage = () => {
     {
       title: "White Label Quotation Service - SaaS Website",
       description: "A SaaS platform for generating and downloading white-label quotations.A large scale project with multiple features.",
-      sourceCode: "https://github.com/quotely-co/client",
+      // sourceCode: "https://github.com/quotely-co/client",
       liveLink: "https://quotely.shop",
       technologies: ["React", "Node.js", "Express", "MongoDB", "AWS", "PDF Download" ,"3D Model"]
     },

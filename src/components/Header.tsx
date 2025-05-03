@@ -21,7 +21,7 @@ const Header = () => {
           transition={{ delay: 0.2, duration: 1, ease: "easeInOut" }}
           className="mt-1 text-sm sm:text-base font-medium text-gray-800"
         >
-          Full stack Developer
+          Software Engineer, Technology & Business Enthusiast
         </motion.p>
       </div>
       <SocialLinks />

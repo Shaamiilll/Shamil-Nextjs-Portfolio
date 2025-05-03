@@ -19,7 +19,6 @@ const ContactSection = () => {
         >
           shamilamiyan@gmail.com
         </motion.a>
-        <p className="text-xs sm:text-sm text-gray-700">Phone: +91 9744676504</p>
       </div>
     </motion.div>
   );

@@ -41,6 +41,16 @@ const SocialLinks = () => {
           <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
         </svg>
       </motion.a>
+      {/* Instagram */}
+      <motion.a
+        href="https://www.instagram.com/shaamiilll" // <-- Replace with your actual IG
+        whileHover={{ scale: 1.1 }}
+        className="text-gray-600 hover:text-pink-500"
+      >
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M7.75 2A5.75 5.75 0 002 7.75v8.5A5.75 5.75 0 007.75 22h8.5A5.75 5.75 0 0022 16.25v-8.5A5.75 5.75 0 0016.25 2h-8.5zM4.5 7.75a3.25 3.25 0 013.25-3.25h8.5a3.25 3.25 0 013.25 3.25v8.5a3.25 3.25 0 01-3.25 3.25h-8.5a3.25 3.25 0 01-3.25-3.25v-8.5zm11.75.25a.75.75 0 100 1.5.75.75 0 000-1.5zM12 8.25a3.75 3.75 0 100 7.5 3.75 3.75 0 000-7.5zm-2.25 3.75a2.25 2.25 0 114.5 0 2.25 2.25 0 01-4.5 0z" />
+        </svg>
+      </motion.a>
     </motion.div>
   );
 };
