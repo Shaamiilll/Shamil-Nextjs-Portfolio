@@ -7,14 +7,14 @@ const ProjectsPage = () => {
   const projects = [
     {
       title: "White Label Quotation Service - SaaS Website",
-      description: "A SaaS platform for generating and downloading white-label quotations.A large scale project with multiple features.",
+      description: "A SaaS platform for generating and downloading white-label quotations for factory and ventors .A large scale project with multiple features.",
       sourceCode: "https://github.com/quotely-co/client",
       liveLink: "https://quotely.shop",
       technologies: ["React", "Node.js", "Express", "MongoDB", "AWS", "PDF Download" ,"3D Model"]
     },
     {
       title: "E-Commerce Platform",
-      description: "A full-stack e-commerce application with MERN stack.with admin role and payment gateway integration.",
+      description: "A full-stack e-commerce application with MERN stack with admin role and payment gateway integration.",
       sourceCode: "https://github.com/watchlab-co/client",
       liveLink: "https://www.watchlab.in/",
       technologies: ["MongoDB", "Express", "React", "Node.js"]
