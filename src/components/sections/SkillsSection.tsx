@@ -14,7 +14,7 @@ const SkillsSection = () => {
   const additionalSkills = [
     "Socket.io", "Cloudinary", "Twilio", "SendGrid", 
     "Firebase", "Node Mailer", "OAuth 2.0", "JWT", 
-    "Postman", "JIRA", "S3"
+    "Postman", "JIRA", "S3","Cloudflare"
   ];
   
   const displaySkills = showAllSkills 

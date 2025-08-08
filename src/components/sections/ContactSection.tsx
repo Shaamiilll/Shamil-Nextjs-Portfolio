@@ -17,7 +17,7 @@ const ContactSection = () => {
           className="text-xs sm:text-sm text-gray-700 hover:underline"
           transition={{ duration: 0.3 }}
         >
-          shamilamiyan@gmail.com
+          connect@shamil.info
         </motion.a>
       </div>
     </motion.div>
