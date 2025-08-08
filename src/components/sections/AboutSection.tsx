@@ -4,16 +4,17 @@ import { motion } from "framer-motion";
 
 const AboutSection = () => {
   const aboutItems = [
-    "Full-stack developer specializing in end-to-end MERN stack development",
-    "Professional experience building Web applications",
+    "Full-stack Software Engineer with expertise in modern JavaScript ecosystems including React, Node.js, and MongoDB",
+    "Proven track record delivering robust and scalable web applications for global clients",
     {
-      text: "Experience",
+      text: "Professional Experience",
       link: "https://www.linkedin.com/in/shamilamiyan/details/experience/",
-      linkText: "Learn more"
+      linkText: "View on LinkedIn"
     },
-    "Focused on creating intuitive, responsive user interfaces",
-    "Continuously learning and exploring new technologies",
-    "Building SaaS!!",
+
+    "Strong focus on building elegant, responsive, and user-centric interfaces",
+    "Committed to continuous learning and staying ahead in fast-evolving technologies",
+    "Currently building SaaS products with real-world impact and scalable architecture",
   ];
 
   return (
