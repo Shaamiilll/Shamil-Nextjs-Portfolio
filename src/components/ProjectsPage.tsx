@@ -13,6 +13,13 @@ const ProjectsPage = () => {
       technologies: ["React", "Node.js", "Express", "MongoDB", "AWS", "PDF Download" ,"3D Model"]
     },
     {
+      title: "Auranize Connect",
+      description: "A Socil media for upcomming generation(On development)",
+      // sourceCode: "https://github.com/quotely-co/client",
+      liveLink: "https://auranize.com",
+      technologies: ["React.js", "Node.js", "Typescript", "MongoDB", "AWS", "Socket.io" ]
+    },
+    {
       title: "E-Commerce Platform",
       description: "A full-stack e-commerce application with MERN stack with admin role and payment gateway integration.",
       sourceCode: "https://github.com/watchlab-co/client",
