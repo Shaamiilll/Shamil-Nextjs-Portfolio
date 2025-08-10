@@ -9,7 +9,7 @@ const AboutSection = () => {
     {
       text: "Professional Experience",
       link: "https://www.linkedin.com/in/shamilamiyan/details/experience/",
-      linkText: "View on LinkedIn"
+      linkText: "Show More"
     },
 
     "Strong focus on building elegant, responsive, and user-centric interfaces",
