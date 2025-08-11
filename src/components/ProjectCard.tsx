@@ -37,7 +37,7 @@ const DynamicProjectCard: React.FC<DynamicProjectCardProps> = ({ project, delay 
         layout
         className={`
           bg-black rounded-3xl cursor-pointer overflow-hidden
-          ${isExpanded ? 'fixed inset-4 z-50' : 'relative h-16'}
+          ${isExpanded ? 'fixed inset-4 z-50 ' : 'relative h-16'}
         `}
         onClick={() => setIsExpanded(!isExpanded)}
         animate={{
