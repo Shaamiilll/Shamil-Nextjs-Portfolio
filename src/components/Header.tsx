@@ -19,9 +19,9 @@ const Header = () => {
           initial={{ opacity: 0, y: -15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 1, ease: "easeInOut" }}
-          className="mt-1 text-sm sm:text-base font-medium text-gray-800"
+          className="mt-1 text-sm sm:text-base font-medium text-gray-700"
         >
-          Software Engineer, Technology & Business Enthusiast
+          Software Engineer | Product Builder & Business Enthusiast
         </motion.p>
       </div>
       <SocialLinks />
