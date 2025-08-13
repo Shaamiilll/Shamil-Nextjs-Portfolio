@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Head from "next/head";
 
 import Header from "@/components/Header";
@@ -11,26 +10,31 @@ import HomePage from "@/components/HomePage";
 import ProjectsPage from "@/components/ProjectsPage";
 
 export default function Home() {
-  const pageTitle = "Shamil A | Full Stack Developer | MERN Specialist";
+  const pageTitle = "Shamil A | Shamil Amiyan | Full Stack Developer & MERN Specialist";
   const pageDescription =
-    "Shamil A is a skilled Full Stack Developer with 2+ years of experience specializing in MERN stack. View portfolio, projects, and contact information.";
+    "Official website of Shamil A (Shamil Amiyan) - Full Stack Developer & Entrepreneur. 2+ years experience in MERN stack, Next.js, and modern web development.";
   const keywords =
-    "Shamil A, Shamil Amiyan, Full Stack Developer, MERN Stack, React Developer, Node.js Developer, Web Developer, MongoDB, Express, React, Next.js, Tailwind CSS";
+    "Shamil, Shamil A, Shamil Amiyan, Shamil Info, Shamil Developer, Shamil MERN, Full Stack Developer, MERN Stack, React Developer, Node.js Developer, Web Developer, MongoDB, Express, React, Next.js, Tailwind CSS";
 
   const schemaMarkup = {
     "@context": "https://schema.org",
     "@type": "Person",
     name: "Shamil A",
+    alternateName: ["Shamil", "Shamil Amiyan"],
     url: "https://shamil-amiyan.vercel.app",
-    jobTitle: "Full Stack Developer",
+    image: "https://shamil-amiyan.vercel.app/profile.jpg",
+    jobTitle: "Full Stack Developer & Entrepreneur",
+    birthDate: "2004-09-13",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Malappuram",
+      addressRegion: "Kerala",
+      addressCountry: "India",
+    },
     worksFor: {
       "@type": "Organization",
       name: "Independent Professional",
     },
-    sameAs: [
-      "https://www.linkedin.com/in/shamilamiyan/",
-      "https://github.com/shaamiilll",
-    ],
     knowsAbout: [
       "MERN Stack",
       "React",
@@ -40,6 +44,15 @@ export default function Home() {
       "Next.js",
       "Tailwind CSS",
       "Web Development",
+      "AWS",
+      "Software Engineering"
+    ],
+    sameAs: [
+      "https://www.linkedin.com/in/shamilamiyan/",
+      "https://github.com/shaamiilll",
+      "https://instagram.com/your-instagram",
+      "https://twitter.com/your-twitter",
+      "https://www.youtube.com/@your-channel"
     ],
   };
 
@@ -78,9 +91,10 @@ export default function Home() {
         />
 
         {/* Structured Data */}
-        <script type="application/ld+json">
-          {JSON.stringify(schemaMarkup)}
-        </script>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
+        />
       </Head>
 
       <main className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 bg-white">

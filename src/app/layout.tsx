@@ -46,8 +46,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="robots" content="index, follow" />
-        
-        {/* ✅ JSON-LD Structured Data - Single source of truth */}
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -57,11 +56,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               name: "Shamil Amiyan",
               alternateName: ["Shamil", "Shamil A"],
               jobTitle: "Full Stack Developer & Entrepreneur",
-              url: "https://shamil-amiyan.vercel.app/",
-              sameAs: [
-                "https://github.com/shaamiilll",
-                "https://linkedin.com/in/shamilamiyan"
-              ],
+              url: "https://shamil.info",
+              image: "https://shamil.info/profile.jpg",
+              birthDate: "2004-09-13",
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Malappuram",
+                addressRegion: "Kerala",
+                addressCountry: "India",
+              },
+              worksFor: {
+                "@type": "Organization",
+                name: "Independent Professional",
+              },
               knowsAbout: [
                 "MERN Stack",
                 "React",
@@ -70,12 +77,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 "Express",
                 "Next.js",
                 "Tailwind CSS",
-                "Web Development"
-              ]
+                "Web Development",
+                "AWS",
+                "Software Engineering",
+              ],
+              sameAs: [
+                "https://www.linkedin.com/in/shamilamiyan/",
+                "https://github.com/shaamiilll",
+                "https://instagram.com/shaamiillll",
+              ],
             }),
           }}
         />
       </head>
+
       <body className={`${inter.className} bg-white text-black`}>
         {children}
         <Analytics />
