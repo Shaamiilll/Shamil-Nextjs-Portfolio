@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://shamil.info
+
+# Sitemaps
+Sitemap: https://shamil.info/sitemap.xml
