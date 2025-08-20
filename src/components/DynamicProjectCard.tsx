@@ -23,7 +23,7 @@ interface DynamicProjectCardProps {
 
 const DynamicProjectCard: React.FC<DynamicProjectCardProps> = ({ project, delay }) => {
   const [isExpanded, setIsExpanded] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
+
 
   return (
     <motion.div
@@ -31,8 +31,7 @@ const DynamicProjectCard: React.FC<DynamicProjectCardProps> = ({ project, delay 
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       className="relative"
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
+    
     >
       <motion.div
         layout
