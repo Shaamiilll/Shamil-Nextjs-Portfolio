@@ -12,33 +12,39 @@ export const metadata = {
     "Shamil, Shamil A, Shamil Amiyan, Full Stack Developer, MERN Stack, Software Engineer, Entrepreneur, JavaScript, React, Next.js, Node.js, MongoDB, Express, Kerala Developer",
   author: "Shamil Amiyan",
   alternates: {
-    canonical: "https://shamil-amiyan.vercel.app/",
+    canonical: "https://shamil.info",
   },
   openGraph: {
     title: "Shamil Amiyan | Full Stack Developer & Entrepreneur",
     description:
       "Shamil Amiyan is a skilled Full Stack Developer & Entrepreneur specializing in MERN stack development, SaaS solutions, and e-commerce platforms.",
     type: "website",
-    url: "https://shamil-amiyan.vercel.app/",
+    url: "https://shamil.info/",
     images: [
       {
-        url: "https://shamil-amiyan.vercel.app/og-image.jpg",
+        url: "https://shamil.info/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Shamil Amiyan - Full Stack Developer"
-      }
+        alt: "Shamil Amiyan - Full Stack Developer",
+      },
     ],
-    siteName: "Shamil Amiyan Portfolio"
+    siteName: "Shamil Amiyan Portfolio",
   },
   twitter: {
     card: "summary_large_image",
     title: "Shamil Amiyan | Full Stack Developer & Entrepreneur",
     description:
       "Shamil Amiyan is a skilled Full Stack Developer & Entrepreneur specializing in MERN stack development, SaaS solutions, and e-commerce platforms.",
-    images: ["https://shamil-amiyan.vercel.app/og-image.jpg"],
-    creator: "@YourTwitterHandle" // Add if you have one
+    images: ["https://shamil.info/og-image.jpg"],
+    creator: "@YourTwitterHandle",
+  },
+  icons: {
+    icon: "/favicon.png", // 👈 Place favicon.ico inside /public
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png", // optional for iOS
   },
 };
+
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
