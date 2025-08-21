@@ -13,7 +13,7 @@ const ProjectsPage = () => {
       technologies: ["React", "Node.js", "Socket.io", "End-to-End Encryption", "TypeScript"],
       year: "2025",
       category: "Social Media",
-      liveLink: "https://auranize.com",
+      liveLink: "https://www.auranize.com",
       // sourceCode: "https://github.com/username/auranize", // Added source code link
       image: "/images/auranize.png",
     },
