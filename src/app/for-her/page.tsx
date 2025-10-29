@@ -9,7 +9,7 @@ export default function ForHer() {
   ];
 
   return (
-    <div className="relative w-full h-screen overflow-y-scroll snap-y snap-mandatory no-scrollbar bg-black">
+    <div className="relative w-full h-screen overflow-y-scroll no-scrollbar bg-black">
       {/* Scrollable full-screen images */}
       {images.map((src, index) => (
         <div
