@@ -3,6 +3,8 @@ import Image from "next/image";
 export default function ForHer() {
   const images = [
     "/images/3.1.png",
+    "/images/3.1.png",
+    "/images/3.1.png",
     // "/images/pic2.jpg",
     // "/images/pic3.jpg",
     // add more paths...
