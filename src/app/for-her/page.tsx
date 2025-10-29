@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 
 export default function ForHer() {
@@ -5,13 +6,11 @@ export default function ForHer() {
     "/images/3.1.png",
     "/images/3.1.png",
     "/images/3.1.png",
-    // "/images/pic2.jpg",
-    // "/images/pic3.jpg",
-    // add more paths...
   ];
 
   return (
-    <div className="w-full h-screen overflow-y-scroll snap-y snap-mandatory no-scrollbar">
+    <div className="relative w-full h-screen overflow-y-scroll snap-y snap-mandatory no-scrollbar">
+      {/* Fullscreen scrollable images */}
       {images.map((src, index) => (
         <div
           key={index}
@@ -26,6 +25,16 @@ export default function ForHer() {
           />
         </div>
       ))}
+
+      {/* Final video (landscape responsive) */}
+      <div className="relative w-full h-screen flex items-center justify-center snap-start bg-black">
+        <video
+          src="/videos/anniversary.mp4"
+          className="w-full h-full object-contain md:object-cover"
+          controls
+          playsInline
+        />
+      </div>
     </div>
   );
 }
