@@ -5,7 +5,7 @@ export default function ForHer() {
   const images = [
     "/images/3.1.png",
     "/images/3.2.png",
-
+    "/images/3.3.png",
   ];
 
   return (
