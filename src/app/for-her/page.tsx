@@ -26,11 +26,11 @@ export default function ForHer() {
       ))}
 
       {/* Final video (responsive, muted, YouTube-like fit) */}
-      <div className="relative w-full h-screen flex items-center justify-center snap-start bg-black px-2">
+      <div className="relative w-full flex items-center justify-center snap-start">
         <div className="w-full max-w-3xl aspect-video">
           <video
             src="/videos/anniversary.mp4"
-            className="w-full h-full rounded-xl object-contain bg-black"
+            className="w-full h-full object-contain "
             controls
             muted
             playsInline
