@@ -5,8 +5,8 @@ import { motion } from "framer-motion";
 const AboutSection = () => {
   const aboutItems = [
     "Software Engineer with strong expertise in building scalable, high-performance systems. Skilled in system design, microservices, caching, and distributed architectures.",
-    "Proficient in modern JavaScript/TypeScript,Node.js , React.js, Python, and cloud platforms like AWS",
-    " Experienced in creating fault-tolerant backends, optimizing performance, and handling large-scale traffic.",
+    "Proficient in modern JavaScript/TypeScript,Node.js , React.js, Python, and cloud platforms AWS",
+    " Experienced in creating REST APIs, designing backends, optimizing performance, and handling large-scale traffic.",
     {
       text: "Professional Experience",
       link: "https://www.linkedin.com/in/shamilamiyan/details/experience/",
