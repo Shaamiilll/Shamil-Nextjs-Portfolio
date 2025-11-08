@@ -47,11 +47,15 @@ const DynamicProjectCard: React.FC<DynamicProjectCardProps> = ({ project, delay 
     };
   }, [isExpanded]);
 
+  // Buttery smooth easing (approximated Apple cubic-bezier(0.25, 0.1, 0.25, 1))
+  const smoothEase = [0.25, 0.1, 0.25, 1];
+  const smoothTransition = { duration: 0.3, ease: smoothEase };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ delay, duration: 0.6, ease: smoothEase }}
       className="relative"
     >
       <motion.div
@@ -68,15 +72,22 @@ const DynamicProjectCard: React.FC<DynamicProjectCardProps> = ({ project, delay 
           }
         `}
         onClick={() => setIsExpanded(!isExpanded)}
-        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ 
+          duration: 0.3, 
+          ease: smoothEase,
+          layout: { 
+            duration: 0.3, 
+            ease: smoothEase 
+          }
+        }}
       >
         {/* Collapsed State */}
         <AnimatePresence>
           {!isExpanded && (
             <motion.div
               initial={{ opacity: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.2 }}
+              exit={{ opacity: 0 }}
+              transition={smoothTransition}
               className="flex items-center justify-between h-full px-4 sm:px-6 md:px-8 py-3 sm:py-4"
             >
               <div className="flex items-center space-x-3 sm:space-x-5 min-w-0 flex-1">
@@ -111,10 +122,10 @@ const DynamicProjectCard: React.FC<DynamicProjectCardProps> = ({ project, delay 
         <AnimatePresence>
           {isExpanded && (
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={smoothTransition}
               className="p-4 sm:p-6 md:p-8 h-full flex flex-col overflow-y-auto"
             >
               {/* Header */}
@@ -280,7 +291,7 @@ const DynamicProjectCard: React.FC<DynamicProjectCardProps> = ({ project, delay 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={smoothTransition}
             className="fixed inset-0 bg-black/20 backdrop-blur-md z-40"
             onClick={() => setIsExpanded(false)}
           />

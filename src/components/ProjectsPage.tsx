@@ -7,6 +7,18 @@ const ProjectsPage = () => {
   const projects = [
     {
       id: "1",
+      title: "Thiqaf Agency - A Agency Website for multilangual clients",
+      description:
+        "A modern agency website designed to showcase services and portfolios to a diverse, multilingual clientele. Features include responsive design, multi-language support, and interactive elements to engage visitors.",
+      technologies: ["React", "Node.js", "End-to-End Encryption", "TypeScript"],
+      year: "2025",
+      category: "Social Media",
+      liveLink: "https://www.thiqafagency.com",
+      // sourceCode: "https://github.com/username/auranize", // Added source code link
+      image: "/images/auranize.png",
+    },
+    {
+      id: "2",
       title: "Auranize - A next gen Social media (On development)",
       description:
         "A next-generation social media platform designed to connect people in a secure, engaging, and interactive environment. Focused on privacy, speed, and modern communication features.",
@@ -18,7 +30,7 @@ const ProjectsPage = () => {
       image: "/images/auranize.png",
     },
     {
-      id: "2",
+      id: "3",
       title: "Quotely - A LargeScale SaaS Platform",
       description:
         "A powerful B2B quotation platform tailored for factories and industrial businesses, featuring real-time 3D model integration for product visualization, seamless order management, and email OTP authentication.",
@@ -30,7 +42,7 @@ const ProjectsPage = () => {
       image: "/images/qotely.png",
     },
     {
-      id: "3",
+      id: "4",
       title: "WatchLab - An Ecommerce Platform",
       description:
         "WatchLab is an ecommerce platform focused on selling watches, featuring an admin dashboard with advanced features and multiple payment gateways. Note: Currently shut down due to some reasons.",
@@ -42,7 +54,7 @@ const ProjectsPage = () => {
       image: "/images/watchlab.png",
     },
     {
-      id: "4",
+      id: "5",
       title: "Jobforce AI - A Job Platform",
       description:
         "A job platform that leverages NLP and AI to scrape and list jobs from the internet, providing a comprehensive job search experience for users.",
@@ -54,7 +66,7 @@ const ProjectsPage = () => {
       image: "/images/jobforce.png",
     },
     {
-      id: "5",
+      id: "6",
       title: "SkillUp - An E-learning Platform",
       description:
         "An e-learning platform connecting students and mentors, built with clean architecture and featuring Google authentication for seamless access.",
@@ -66,7 +78,7 @@ const ProjectsPage = () => {
       image: "/images/not-found.png",
     },
     {
-      id: "6",
+      id: "7",
       title: "Infinity - An Ecommerce App",
       description:
         "An ecommerce platform for gadgets like mobiles and laptops, featuring an admin dashboard with sales analysis, report generation in PDF, email authentication, multiple payment gateways, and coupon code functionality.",
@@ -77,7 +89,7 @@ const ProjectsPage = () => {
       sourceCode: "https://github.com/Shaamiilll/Infinity-Ecommerce", // Added source code link
       image: "/images/not-found.png",
     },
-    
+
   ];
 
   return (
