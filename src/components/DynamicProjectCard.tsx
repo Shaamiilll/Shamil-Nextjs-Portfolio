@@ -1,4 +1,4 @@
-// File: components/DynamicProjectCard.js
+// File: src/components/DynamicProjectCard.tsx
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -47,8 +47,8 @@ const DynamicProjectCard: React.FC<DynamicProjectCardProps> = ({ project, delay 
     };
   }, [isExpanded]);
 
-  // Buttery smooth easing (approximated Apple cubic-bezier(0.25, 0.1, 0.25, 1))
-  const smoothEase = [0.25, 0.1, 0.25, 1];
+  // Buttery smooth easing (Apple's standard cubic-bezier(0.25, 0.1, 0.25, 1))
+  const smoothEase: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
   const smoothTransition = { duration: 0.3, ease: smoothEase };
 
   return (
