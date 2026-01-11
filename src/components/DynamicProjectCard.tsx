@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 interface Project {
   id: string;
@@ -35,20 +36,20 @@ const DynamicProjectCard: React.FC<DynamicProjectCardProps> = ({ project }) => {
 
   // ─── iOS/macOS-like fast & buttery spring (2025–2026 feel) ───────
   const springFast = {
-    type: "spring",
+    type: "spring" as const,
     stiffness: 420,      // snappy acceleration
     damping: 38,         // quick settle, almost no bounce
     mass: 0.75,          // light & responsive
   };
 
   const springUltraFast = {
-    type: "spring",
+    type: "spring" as const,
     stiffness: 500,
     damping: 42,
     mass: 0.68,
   };
 
-  const overshootCurve = [0.165, 0.84, 0.44, 1]; // very popular macOS/iOS-ish overshoot
+  const overshootCurve: [number, number, number, number] = [0.165, 0.84, 0.44, 1]; // very popular macOS/iOS-ish overshoot
 
   const cardVariants = {
     collapsed: {
@@ -151,8 +152,13 @@ const DynamicProjectCard: React.FC<DynamicProjectCardProps> = ({ project }) => {
                 <div className="space-y-6">
                   {/* Image */}
                   {project.image ? (
-                    <div className="rounded-2xl overflow-hidden aspect-video border border-gray-200 shadow-sm">
-                      <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+                    <div className="rounded-2xl overflow-hidden aspect-video border border-gray-200 shadow-sm relative">
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        className="object-cover"
+                      />
                     </div>
                   ) : (
                     <div className="aspect-video rounded-2xl bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-200 flex items-center justify-center">
