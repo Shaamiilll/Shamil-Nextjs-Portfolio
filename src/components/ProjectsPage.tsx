@@ -1,6 +1,4 @@
-// File: components/ProjectsPage.js
 import React from "react";
-import { motion } from "framer-motion";
 import ProjectCard from "./DynamicProjectCard";
 
 const ProjectsPage = () => {
@@ -14,7 +12,6 @@ const ProjectsPage = () => {
       year: "2025",
       category: "Social Media",
       liveLink: "https://www.thiqafagency.com",
-      // sourceCode: "https://github.com/username/auranize", // Added source code link
       image: "/images/auranize.png",
     },
     {
@@ -26,7 +23,6 @@ const ProjectsPage = () => {
       year: "2025",
       category: "Social Media",
       liveLink: "https://www.auranize.com",
-      // sourceCode: "https://github.com/username/auranize", // Added source code link
       image: "/images/auranize.png",
     },
     {
@@ -38,7 +34,7 @@ const ProjectsPage = () => {
       year: "2024",
       category: "SaaS",
       liveLink: "https://quotely.shop",
-      sourceCode: "https://github.com/quotely-co/server", // Added source code link
+      sourceCode: "https://github.com/quotely-co/server",
       image: "/images/qotely.png",
     },
     {
@@ -50,7 +46,7 @@ const ProjectsPage = () => {
       year: "2024",
       category: "Ecommerce",
       liveLink: "https://watchlab.in",
-      sourceCode: "https://github.com/watchlab-co/backend", // Added source code link
+      sourceCode: "https://github.com/watchlab-co/backend",
       image: "/images/watchlab.png",
     },
     {
@@ -62,7 +58,7 @@ const ProjectsPage = () => {
       year: "2024",
       category: "Job Platform",
       liveLink: "https://shamil-jobforce.vercel.app/login",
-      sourceCode: "https://github.com/Shaamiilll/Jobsforce", // Added source code link
+      sourceCode: "https://github.com/Shaamiilll/Jobsforce",
       image: "/images/jobforce.png",
     },
     {
@@ -74,7 +70,7 @@ const ProjectsPage = () => {
       year: "2024",
       category: "E-learning",
       liveLink: "",
-      sourceCode: "https://github.com/Shaamiilll/Skillup-E-learning", // Added source code link
+      sourceCode: "https://github.com/Shaamiilll/Skillup-E-learning",
       image: "/images/not-found.png",
     },
     {
@@ -86,39 +82,26 @@ const ProjectsPage = () => {
       year: "2023",
       category: "Ecommerce",
       liveLink: "",
-      sourceCode: "https://github.com/Shaamiilll/Infinity-Ecommerce", // Added source code link
+      sourceCode: "https://github.com/Shaamiilll/Infinity-Ecommerce",
       image: "/images/not-found.png",
     },
-
   ];
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.3 }}
-      className="absolute w-full mt-6 mb-8"
-    >
-      <motion.h2
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.1, duration: 0.4 }}
-        className="font-semibold text-base sm:text-lg mb-4"
-      >
+    <div className="w-full mt-6 mb-8">
+      <h2 className="font-semibold text-base sm:text-lg mb-4">
         Projects
-      </motion.h2>
+      </h2>
 
       <div className="space-y-4">
-        {projects.map((project, index) => (
+        {projects.map((project) => (
           <ProjectCard
-            key={index}
+            key={project.id}
             project={project}
-            delay={0.2 + index * 0.1}
           />
         ))}
       </div>
-    </motion.div>
+    </div>
   );
 };
 
