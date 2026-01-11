@@ -12,7 +12,7 @@ const ProjectsPage = () => {
       year: "2025",
       category: "Social Media",
       liveLink: "https://www.thiqafagency.com",
-      image: "/images/auranize.png",
+      image: "/images/thiqaf.png",
     },
     {
       id: "2",
@@ -23,7 +23,7 @@ const ProjectsPage = () => {
       year: "2025",
       category: "Social Media",
       liveLink: "https://www.auranize.com",
-      image: "/images/auranize.png",
+      image: "/images/development.png",
     },
     {
       id: "3",
@@ -71,7 +71,7 @@ const ProjectsPage = () => {
       category: "E-learning",
       liveLink: "",
       sourceCode: "https://github.com/Shaamiilll/Skillup-E-learning",
-      image: "/images/not-found.png",
+      image: "/images/not-hosted.png",
     },
     {
       id: "7",
@@ -83,7 +83,7 @@ const ProjectsPage = () => {
       category: "Ecommerce",
       liveLink: "",
       sourceCode: "https://github.com/Shaamiilll/Infinity-Ecommerce",
-      image: "/images/not-found.png",
+      image: "/images/not-hosted.png",
     },
   ];
 
