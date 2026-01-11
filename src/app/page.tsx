@@ -10,7 +10,7 @@ import HomePage from "@/components/HomePage";
 import ProjectsPage from "@/components/ProjectsPage";
 
 export default function Home() {
-  const pageTitle = "Shamil A | Shamil Amiyan | Full Stack Developer & MERN Specialist";
+  const pageTitle = "Shamil A | Shamil Amiyan | Software Engineer & Entrepreneur";
   const pageDescription =
     "Official website of Shamil A (Shamil Amiyan) - Full Stack Developer & Entrepreneur. 2+ years experience in MERN stack, Next.js, and modern web development.";
   const keywords =
