@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface Project {
   id: string;
@@ -21,219 +22,232 @@ const DynamicProjectCard: React.FC<DynamicProjectCardProps> = ({ project }) => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   useEffect(() => {
-    if (isExpanded) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
+    document.body.style.overflow = isExpanded ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
   }, [isExpanded]);
+
+  // ─── iOS/macOS-like fast & buttery spring (2025–2026 feel) ───────
+  const springFast = {
+    type: "spring",
+    stiffness: 420,      // snappy acceleration
+    damping: 38,         // quick settle, almost no bounce
+    mass: 0.75,          // light & responsive
+  };
+
+  const springUltraFast = {
+    type: "spring",
+    stiffness: 500,
+    damping: 42,
+    mass: 0.68,
+  };
+
+  const overshootCurve = [0.165, 0.84, 0.44, 1]; // very popular macOS/iOS-ish overshoot
+
+  const cardVariants = {
+    collapsed: {
+      borderRadius: "16px",
+      transition: { ...springFast, duration: 0.38 }
+    },
+    expanded: {
+      borderRadius: "28px", // bigger radius feels more premium on expand
+      transition: { ...springFast, duration: 0.42 }
+    }
+  };
 
   return (
     <div className="relative">
-      <div
-        className={`
-          rounded-2xl cursor-pointer overflow-hidden
-          ${isExpanded 
-            ? `fixed z-50 bg-white border border-gray-200 shadow-2xl
-               ${isMobile 
-                 ? 'inset-4 top-8 bottom-8' 
-                 : 'inset-8 md:inset-16'
-               }` 
-            : 'relative h-16 sm:h-20 bg-white border border-gray-200 shadow-sm hover:shadow-md'
-          }
-        `}
-        onClick={() => setIsExpanded(!isExpanded)}
-      >
-        {!isExpanded && (
-          <div className="flex items-center justify-between h-full px-4 sm:px-6 md:px-8 py-3 sm:py-4">
-            <div className="flex items-center space-x-3 sm:space-x-5 min-w-0 flex-1">
+      <AnimatePresence>
+        <motion.div
+          layout
+          layoutId={`project-card-${project.id}`}
+          variants={cardVariants}
+          initial="collapsed"
+          animate={isExpanded ? "expanded" : "collapsed"}
+          transition={{
+            default: springFast,
+            layout: springFast,
+            borderRadius: { type: "tween", duration: 0.4, ease: overshootCurve }
+          }}
+          className={`
+            cursor-pointer overflow-hidden bg-white border border-gray-200
+            ${isExpanded
+              ? `fixed z-50 shadow-2xl border-gray-300/70
+                 ${isMobile ? "inset-4 top-10 bottom-10" : "inset-6 lg:inset-12"}`
+              : "relative h-16 sm:h-20 shadow-sm hover:shadow-md"
+            }
+          `}
+          onClick={() => setIsExpanded(!isExpanded)}
+          whileHover={!isExpanded ? { scale: 1.016, y: -2.5 } : {}}
+          whileTap={{ scale: isExpanded ? 0.995 : 0.97 }}
+        >
+          {/* Collapsed content */}
+          {!isExpanded && (
+            <div className="flex items-center justify-between h-full px-4 sm:px-6 py-3 sm:py-4">
               <div className="flex flex-col min-w-0 flex-1">
                 <h3 className="text-gray-900 font-semibold text-sm sm:text-base tracking-tight truncate">
                   {project.title}
                 </h3>
-                <p className="text-gray-500 text-xs sm:text-sm font-medium truncate">{project.category}</p>
+                <p className="text-gray-500 text-xs sm:text-sm font-medium truncate">
+                  {project.category}
+                </p>
               </div>
-            </div>
 
-            <div className="flex items-center space-x-2 sm:space-x-4 flex-shrink-0">
-              <div className="hidden sm:flex items-center space-x-2 bg-gray-50 px-3 py-1.5 rounded-full">
-                <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-                <span className="text-gray-600 text-xs font-medium">{project.year}</span>
-              </div>
-              <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gray-100 rounded-lg sm:rounded-xl flex items-center justify-center text-gray-400">
-                <svg width="12" height="12" viewBox="0 0 16 16" fill="none" className="sm:w-3.5 sm:h-3.5">
-                  <path d="M6 4L10 8L6 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {isExpanded && (
-          <div className="p-4 sm:p-6 md:p-8 h-full flex flex-col overflow-y-auto">
-            <div className="flex items-start justify-between mb-6 sm:mb-8 flex-shrink-0">
-              <div className="flex items-center space-x-3 sm:space-x-4 min-w-0 flex-1 pr-4">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-xl sm:rounded-2xl flex items-center justify-center border border-blue-200/50 flex-shrink-0">
-                  <div className="w-5 h-5 sm:w-6 sm:h-6 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg sm:rounded-xl"></div>
+              <div className="flex items-center space-x-3 flex-shrink-0">
+                <div className="hidden sm:flex items-center space-x-2 bg-gray-50 px-3 py-1.5 rounded-full text-xs">
+                  <div className="w-2 h-2 bg-gray-400 rounded-full" />
+                  <span className="text-gray-600 font-medium">{project.year}</span>
                 </div>
-                <div className="min-w-0 flex-1">
-                  <h1 className="text-gray-900 font-bold text-lg sm:text-xl md:text-2xl tracking-tight mb-1 truncate">{project.title}</h1>
-                  <div className="flex items-center space-x-2 sm:space-x-3 text-sm sm:text-base">
-                    <span className="text-gray-600 font-medium truncate">{project.category}</span>
-                    <div className="w-1 h-1 bg-gray-300 rounded-full flex-shrink-0"></div>
-                    <span className="text-gray-500 flex-shrink-0">{project.year}</span>
-                  </div>
+                <div className="w-7 h-7 bg-gray-100 rounded-lg flex items-center justify-center text-gray-400">
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                    <path d="M6 4L10 8L6 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
                 </div>
               </div>
-
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setIsExpanded(false);
-                }}
-                className="w-8 h-8 sm:w-10 sm:h-10 bg-gray-100 rounded-lg sm:rounded-xl flex items-center justify-center text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
-              >
-                <svg width="12" height="12" viewBox="0 0 16 16" fill="none" className="sm:w-3.5 sm:h-3.5">
-                  <path d="M12 4L4 12M4 4l8 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                </svg>
-              </button>
             </div>
+          )}
 
-            <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 min-h-0">
-              <div className="space-y-4 sm:space-y-6">
-                {project.image ? (
-                  <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl sm:rounded-2xl overflow-hidden aspect-video border border-gray-200 shadow-sm">
-                    <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+          {/* Expanded content */}
+          {isExpanded && (
+            <div className="p-5 sm:p-7 md:p-9 h-full flex flex-col overflow-y-auto">
+              {/* Header */}
+              <div className="flex items-start justify-between mb-6 sm:mb-8">
+                <div className="flex items-center space-x-4 flex-1 pr-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl flex items-center justify-center border border-blue-200/60 flex-shrink-0">
+                    <div className="w-6 h-6 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl" />
                   </div>
-                ) : (
-                  <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl sm:rounded-2xl aspect-video flex items-center justify-center border border-gray-200">
-                    <div className="text-center">
-                      <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white rounded-xl sm:rounded-2xl mx-auto mb-3 sm:mb-4 flex items-center justify-center shadow-sm border border-gray-200">
-                        <svg
-                          width="20"
-                          height="20"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          className="text-gray-400 sm:w-7 sm:h-7"
-                        >
-                          <path
-                            d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                          <path
-                            d="M14 14l2.586-2.586a2 2 0 012.828 0L22 14"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                          <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="2" />
-                        </svg>
-                      </div>
-                      <p className="text-gray-500 font-medium text-sm sm:text-base">Preview coming soon</p>
+                  <div className="min-w-0 flex-1">
+                    <h1 className="text-2xl font-bold tracking-tight mb-1 truncate">{project.title}</h1>
+                    <div className="flex items-center space-x-3 text-sm">
+                      <span className="text-gray-600 font-medium">{project.category}</span>
+                      <div className="w-1 h-1 bg-gray-300 rounded-full" />
+                      <span className="text-gray-500">{project.year}</span>
                     </div>
                   </div>
-                )}
-
-                <div className="grid grid-cols-3 gap-3 sm:gap-4">
-                  <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg sm:rounded-xl p-3 sm:p-4 text-center border border-blue-200/50">
-                    <div className="text-lg sm:text-xl font-bold text-blue-600 mb-1">{project.technologies.length}</div>
-                    <div className="text-blue-500 text-xs sm:text-sm font-medium">Tech</div>
-                  </div>
-                  <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg sm:rounded-xl p-3 sm:p-4 text-center border border-purple-200/50">
-                    <div className="text-lg sm:text-xl font-bold text-purple-600 mb-1">{project.year}</div>
-                    <div className="text-purple-500 text-xs sm:text-sm font-medium">Year</div>
-                  </div>
-                  <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg sm:rounded-xl p-3 sm:p-4 text-center border border-green-200/50">
-                    <div className="text-lg sm:text-xl font-bold text-green-600 mb-1">●</div>
-                    <div className="text-green-500 text-xs sm:text-sm font-medium">Active</div>
-                  </div>
                 </div>
+
+                <motion.button
+                  onClick={(e) => { e.stopPropagation(); setIsExpanded(false); }}
+                  className="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center text-gray-500 hover:text-gray-700"
+                  whileHover={{ scale: 1.08 }}
+                  whileTap={{ scale: 0.92 }}
+                  transition={springUltraFast}
+                >
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M12 4L4 12M4 4l8 8" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                  </svg>
+                </motion.button>
               </div>
 
-              <div className="space-y-4 sm:space-y-6">
-                <div>
-                  <h2 className="text-gray-900 font-bold text-base sm:text-lg mb-2 sm:mb-3">About</h2>
-                  <p className="text-gray-600 text-sm sm:text-base leading-relaxed">{project.description}</p>
-                </div>
+              {/* Main content grid */}
+              <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-7 min-h-0">
+                {/* Left side */}
+                <div className="space-y-6">
+                  {/* Image */}
+                  {project.image ? (
+                    <div className="rounded-2xl overflow-hidden aspect-video border border-gray-200 shadow-sm">
+                      <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+                    </div>
+                  ) : (
+                    <div className="aspect-video rounded-2xl bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-200 flex items-center justify-center">
+                      <p className="text-gray-500 font-medium">Preview not available</p>
+                    </div>
+                  )}
 
-                <div>
-                  <h2 className="text-gray-900 font-bold text-base sm:text-lg mb-3 sm:mb-4">Technologies</h2>
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.map((tech, index) => (
-                      <span
-                        key={index}
-                        className="px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gradient-to-r from-gray-50 to-gray-100 text-gray-700 text-xs sm:text-sm font-medium rounded-md sm:rounded-lg border border-gray-200"
+                  {/* Stats */}
+                  <div className="grid grid-cols-3 gap-4">
+                    {[
+                      { value: project.technologies.length, label: "Tech stack", color: "blue" },
+                      { value: project.year, label: "Year", color: "purple" },
+                      { value: "●", label: "Active", color: "green" },
+                    ].map((stat, i) => (
+                      <div
+                        key={i}
+                        className={`bg-gradient-to-br from-${stat.color}-50 to-${stat.color}-100 border border-${stat.color}-200/60 rounded-xl p-4 text-center`}
                       >
-                        {tech}
-                      </span>
+                        <div className={`text-2xl font-bold text-${stat.color}-600 mb-1`}>{stat.value}</div>
+                        <div className={`text-xs font-medium text-${stat.color}-600/80`}>{stat.label}</div>
+                      </div>
                     ))}
                   </div>
                 </div>
 
-                <div className="space-y-2 sm:space-y-3 pt-2 sm:pt-4">
-                  {project.liveLink && (
-                    <a
-                      href={project.liveLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold py-2.5 sm:py-3 px-4 rounded-lg sm:rounded-xl text-sm text-center block hover:from-blue-700 hover:to-indigo-700 transition-colors"
-                    >
-                      <div className="flex items-center justify-center space-x-2">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="sm:w-4 sm:h-4">
-                          <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                          <path d="M15 3h6v6M10 14L21 3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                        <span>View Live Demo</span>
-                      </div>
-                    </a>
-                  )}
-                  {project.sourceCode && (
-                    <a
-                      href={project.sourceCode}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      className="w-full bg-white text-gray-700 font-semibold py-2.5 sm:py-3 px-4 rounded-lg sm:rounded-xl text-sm text-center block border-2 border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-colors"
-                    >
-                      <div className="flex items-center justify-center space-x-2">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="sm:w-4 sm:h-4">
-                          <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                        <span>View Source Code</span>
-                      </div>
-                    </a>
-                  )}
+                {/* Right side */}
+                <div className="space-y-6">
+                  <div>
+                    <h2 className="text-lg font-bold mb-3">About</h2>
+                    <p className="text-gray-600 leading-relaxed text-[15px]">{project.description}</p>
+                  </div>
+
+                  <div>
+                    <h2 className="text-lg font-bold mb-3">Technologies</h2>
+                    <div className="flex flex-wrap gap-2">
+                      {project.technologies.map((tech, i) => (
+                        <span
+                          key={i}
+                          className="px-3 py-1.5 bg-gray-100/80 text-gray-700 text-sm font-medium rounded-lg border border-gray-200"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="space-y-3 pt-3">
+                    {project.liveLink && (
+                      <motion.a
+                        href={project.liveLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium py-3 px-5 rounded-xl text-center"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.97 }}
+                        transition={springUltraFast}
+                      >
+                        View Live Project →
+                      </motion.a>
+                    )}
+
+                    {project.sourceCode && (
+                      <motion.a
+                        href={project.sourceCode}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block w-full bg-white border-2 border-gray-200 hover:border-gray-300 text-gray-700 font-medium py-3 px-5 rounded-xl text-center"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.97 }}
+                        transition={springUltraFast}
+                      >
+                        View Source Code →
+                      </motion.a>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        )}
-      </div>
+          )}
+        </motion.div>
+      </AnimatePresence>
 
-      {isExpanded && (
-        <div
-          className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40"
-          onClick={() => setIsExpanded(false)}
-        />
-      )}
+      {/* Backdrop - very fast & subtle */}
+      <AnimatePresence>
+        {isExpanded && (
+          <motion.div
+            className="fixed inset-0 bg-black/25 backdrop-blur-sm z-40"
+            onClick={() => setIsExpanded(false)}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.28, ease: overshootCurve }}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 };
