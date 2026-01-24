@@ -21,7 +21,7 @@ const Header = () => {
           transition={{ delay: 0.2, duration: 1, ease: "easeInOut" }}
           className="mt-1 text-sm sm:text-base font-medium text-gray-700"
         >
-          Software Engineer | Product Builder & Business Enthusiast
+          Software Engineer | Building Scalable Software Systems
         </motion.p>
       </div>
       <SocialLinks />
