@@ -6,11 +6,12 @@ const ProjectsPage = () => {
     {
       id: "0",
       title: "Advanced StartUp india - scrapper and analyzer for startups",
-      description:"A github repository for scrapping and analyzing startup data from startupinidia.gov.in. It includes features for data extraction, cleaning, and visualization to help users gain insights into the startup ecosystem in India.",
+      description: "A github repository for scrapping and analyzing startup data from startupinidia.gov.in. It includes features for data extraction, cleaning, and visualization to help users gain insights into the startup ecosystem in India.",
       technologies: ["Python", "BeautifulSoup", "Pandas", "Matplotlib"],
       year: "2025",
       category: "Data Analysis",
       liveLink: "https://github.com/Shaamiilll/StartupIndia-scrapper",
+      image: "/images/not-hosted.png",
     },
     {
       id: "1",
