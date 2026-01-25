@@ -16,24 +16,29 @@ const Navigation: React.FC<NavigationProps> = ({ activePage, setActivePage }) =>
 
         <button
           onClick={() => setActivePage("home")}
-          className={`relative z-10 px-8 py-3 rounded-full font-medium text-sm transition-all duration-300 ease-out ${
-            activePage === "home"
+          className={`relative z-10 px-8 py-3 rounded-full font-medium text-sm transition-all duration-300 ease-out ${activePage === "home"
               ? "text-black drop-shadow-md"
               : "text-black/70 hover:text-black"
-          }`}
+            }`}
         >
           Home
         </button>
         <button
-          onClick={() => setActivePage("projects")}
-          className={`relative z-10 px-8 py-3 rounded-full font-medium text-sm transition-all duration-300 ease-out ${
-            activePage === "projects"
+          onClick={() => {
+            setActivePage("projects");
+
+            window.gtag?.("event", "nav_click", {
+              nav_item: "projects",
+            });
+          }}
+          className={`relative z-10 px-8 py-3 rounded-full font-medium text-sm transition-all duration-300 ease-out ${activePage === "projects"
               ? "text-black drop-shadow-md"
               : "text-black/70 hover:text-black"
-          }`}
+            }`}
         >
           Projects
         </button>
+
 
         {/* Sliding active pill with enhanced glass effect */}
         <div
