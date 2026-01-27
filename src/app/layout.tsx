@@ -41,9 +41,9 @@ export const metadata = {
     creator: "@YourTwitterHandle",
   },
   icons: {
-    icon: "/favicon.png", // 👈 Place favicon.ico inside /public
+    icon: "/favicon.png", 
     shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.png", // optional for iOS
+    apple: "/apple-touch-icon.png", 
   },
 };
 
