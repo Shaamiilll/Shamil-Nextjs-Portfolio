@@ -3,8 +3,19 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const AboutSection = () => {
+  // Calculate years of experience dynamically
+  const calculateExperience = () => {
+    const startDate = new Date("2024-01-01"); // Your career start date
+    const now = new Date();
+    const diffInMs = now.getTime() - startDate.getTime();
+    const years = diffInMs / (1000 * 60 * 60 * 24 * 365.25);
+    return years.toFixed(1);
+  };
+
+  const yearsOfExperience = calculateExperience();
+
   const aboutItems = [
-    "Software Engineer with strong expertise in building scalable, high-performance systems. Skilled in system design, microservices, caching, and distributed architectures.",
+    `Software Engineer with ${yearsOfExperience}+ years of experience and strong expertise in building scalable, high-performance systems. Skilled in system design, microservices, caching, and distributed architectures.`,
     "Proficient in modern JavaScript/TypeScript,Node.js , React.js, Python, and cloud platforms AWS",
     " Experienced in creating REST APIs, designing backends, optimizing performance, and handling large-scale traffic.",
     {
