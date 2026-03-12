@@ -97,7 +97,7 @@ export default function Home() {
         />
       </Head>
 
-      <main className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 bg-white">
+      <main className="min-h-screen flex flex-col items-center justify-start pt-12 sm:pt-16 px-4 sm:px-6 bg-white">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
