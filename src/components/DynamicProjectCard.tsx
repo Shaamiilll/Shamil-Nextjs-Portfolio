@@ -75,12 +75,10 @@ const DynamicProjectCard: React.FC<DynamicProjectCardProps> = ({ project }) => {
             ${isExpanded
               ? `fixed z-50 shadow-2xl border-gray-300/70
                  ${isMobile ? "inset-3 top-14 bottom-4" : isTablet ? "inset-5 top-12 bottom-6" : "inset-8 lg:inset-16 xl:inset-20"}`
-              : "relative h-14 sm:h-16 md:h-20 shadow-sm hover:shadow-md"
+              : "relative h-14 sm:h-16 md:h-20"
             }
           `}
           onClick={() => setIsExpanded(!isExpanded)}
-          whileHover={!isExpanded ? { scale: 1.01, y: -1 } : {}}
-          whileTap={{ scale: isExpanded ? 0.998 : 0.98 }}
         >
           {/* Collapsed content */}
           <AnimatePresence mode="wait">
