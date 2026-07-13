@@ -102,7 +102,7 @@ export default function Home() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeInOut" }}
-          className="max-w-xl w-full"
+          className="max-w-2xl w-full"
         >
           <Navigation activePage={activePage} setActivePage={setActivePage} />
           <Header />

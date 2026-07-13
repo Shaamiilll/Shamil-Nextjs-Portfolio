@@ -135,9 +135,9 @@ const ProjectsPage = () => {
 
   return (
     <div className='w-full mt-6 mb-8'>
-      <h2 className='font-semibold text-base sm:text-lg mb-4'>Projects</h2>
+      <h2 className='font-semibold text-base sm:text-lg mb-5'>Projects</h2>
 
-      <div className='space-y-4'>
+      <div className='space-y-1.5 sm:space-y-2'>
         {projects.map(project => (
           <ProjectCard key={project.id} project={project} />
         ))}
