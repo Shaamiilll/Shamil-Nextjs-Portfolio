@@ -21,7 +21,7 @@ const ProjectsPage = () => {
       year: '2026',
       category: 'Social Media Platform',
       liveLink: 'https://fliq.shamil.info',
-      image: '/images/not-hosted.png'
+      image: '/images/fliq.png'
     },
     {
       id: '2',
