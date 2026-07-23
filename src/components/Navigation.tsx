@@ -25,7 +25,7 @@ const Navigation: React.FC<NavigationProps> = ({ activePage, setActivePage }) =>
         }}
         className={linkClass("projects")}
       >
-        Projects
+        Building
       </button>
     </nav>
   );
