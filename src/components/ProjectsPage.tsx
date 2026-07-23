@@ -5,7 +5,7 @@ const ProjectsPage = () => {
   const projects = [
     {
       id: '1',
-      title: 'Fliq - Short Form Text Social Platform',
+      title: 'Fliq - Text Social Platform',
       description:
         'A modern swipe-based social media platform focused on short-form text content. Built for fast content consumption, users can create, like, save, and interact with high-signal posts through a minimal and engaging mobile-first experience.',
       technologies: [
@@ -23,17 +23,17 @@ const ProjectsPage = () => {
       liveLink: 'https://fliq.shamil.info',
       image: '/images/fliq.png'
     },
-    {
-      id: '2',
-      title: 'Advanced StartUp india - scrapper and analyzer for startups',
-      description:
-        'A github repository for scrapping and analyzing startup data from startupinidia.gov.in. It includes features for data extraction, cleaning, and visualization to help users gain insights into the startup ecosystem in India.',
-      technologies: ['Python', 'BeautifulSoup', 'Pandas', 'Matplotlib'],
-      year: '2025',
-      category: 'Data Analysis',
-      liveLink: 'https://github.com/Shaamiilll/StartupIndia-scrapper',
-      image: '/images/not-hosted.png'
-    },
+    // {
+    //   id: '2',
+    //   title: 'Advanced StartUp india - scrapper and analyzer for startups',
+    //   description:
+    //     'A github repository for scrapping and analyzing startup data from startupinidia.gov.in. It includes features for data extraction, cleaning, and visualization to help users gain insights into the startup ecosystem in India.',
+    //   technologies: ['Python', 'BeautifulSoup', 'Pandas', 'Matplotlib'],
+    //   year: '2025',
+    //   category: 'Data Analysis',
+    //   liveLink: 'https://github.com/Shaamiilll/StartupIndia-scrapper',
+    //   image: '/images/not-hosted.png'
+    // },
     // {
     //   id: "1",
     //   title: "Thiqaf Agency - A Agency Website for multilangual clients",
@@ -56,45 +56,45 @@ const ProjectsPage = () => {
     //   liveLink: "https://www.auranize.com",
     //   image: "/images/development.png",
     // },
-    {
-      id: '3',
-      title: 'Quotely - A LargeScale SaaS Platform',
-      description:
-        'A powerful B2B quotation platform tailored for factories and industrial businesses, featuring real-time 3D model integration for product visualization, seamless order management, and email OTP authentication.',
-      technologies: [
-        'React.js',
-        'Node.js',
-        '3D MockUps',
-        'AWS',
-        'EC2',
-        'Stripe Payment',
-        'Email OTP Auth'
-      ],
-      year: '2024',
-      category: 'SaaS',
-      liveLink: 'https://quotely.shop',
-      sourceCode: 'https://github.com/quotely-co/server',
-      image: '/images/qotely.png'
-    },
-    {
-      id: '4',
-      title: 'WatchLab - An Ecommerce Platform',
-      description:
-        'WatchLab is an ecommerce platform focused on selling watches, featuring an admin dashboard with advanced features and multiple payment gateways. Note: Currently shut down due to some reasons.',
-      technologies: [
-        'React.js',
-        'Node.js',
-        'Razorpay',
-        'Multiple Payment Gateways',
-        'EC2',
-        'Cloudinary'
-      ],
-      year: '2024',
-      category: 'Ecommerce',
-      liveLink: 'https://watchlab.in',
-      sourceCode: 'https://github.com/watchlab-co/backend',
-      image: '/images/watchlab.png'
-    }
+    // {
+    //   id: '3',
+    //   title: 'Quotely - A LargeScale SaaS Platform',
+    //   description:
+    //     'A powerful B2B quotation platform tailored for factories and industrial businesses, featuring real-time 3D model integration for product visualization, seamless order management, and email OTP authentication.',
+    //   technologies: [
+    //     'React.js',
+    //     'Node.js',
+    //     '3D MockUps',
+    //     'AWS',
+    //     'EC2',
+    //     'Stripe Payment',
+    //     'Email OTP Auth'
+    //   ],
+    //   year: '2024',
+    //   category: 'SaaS',
+    //   liveLink: 'https://quotely.shop',
+    //   sourceCode: 'https://github.com/quotely-co/server',
+    //   image: '/images/qotely.png'
+    // },
+    // {
+    //   id: '4',
+    //   title: 'WatchLab - An Ecommerce Platform',
+    //   description:
+    //     'WatchLab is an ecommerce platform focused on selling watches, featuring an admin dashboard with advanced features and multiple payment gateways. Note: Currently shut down due to some reasons.',
+    //   technologies: [
+    //     'React.js',
+    //     'Node.js',
+    //     'Razorpay',
+    //     'Multiple Payment Gateways',
+    //     'EC2',
+    //     'Cloudinary'
+    //   ],
+    //   year: '2024',
+    //   category: 'Ecommerce',
+    //   liveLink: 'https://watchlab.in',
+    //   sourceCode: 'https://github.com/watchlab-co/backend',
+    //   image: '/images/watchlab.png'
+    // }
     // {
     //   id: "5",
     //   title: "Jobforce AI - A Job Platform",
@@ -135,7 +135,10 @@ const ProjectsPage = () => {
 
   return (
     <div className='w-full mt-6 mb-8'>
-      <h2 className='font-semibold text-base sm:text-lg mb-5'>Projects</h2>
+      <h2 className='font-semibold text-base sm:text-lg mb-1'>Things I&apos;m Building</h2>
+      <p className='text-xs sm:text-sm text-gray-500 mb-5'>
+        Products and projects I&apos;ve designed, built, and shipped.
+      </p>
 
       <div className='space-y-1.5 sm:space-y-2'>
         {projects.map(project => (

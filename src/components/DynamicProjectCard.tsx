@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
@@ -29,6 +30,9 @@ const easeOut: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 const DynamicProjectCard: React.FC<DynamicProjectCardProps> = ({ project }) => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     if (!isExpanded) return;
@@ -88,22 +92,25 @@ const DynamicProjectCard: React.FC<DynamicProjectCardProps> = ({ project }) => {
         </motion.button>
       )}
 
-      <AnimatePresence>
-        {isExpanded && (
-          <motion.div
-            key="backdrop"
-            className="fixed inset-0 z-40 bg-black/25"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3, ease: easeOut }}
-            onClick={close}
-          />
-        )}
-      </AnimatePresence>
+      {mounted &&
+        createPortal(
+          <>
+            <AnimatePresence>
+              {isExpanded && (
+                <motion.div
+                  key="backdrop"
+                  className="fixed inset-0 z-40 bg-black/25"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3, ease: easeOut }}
+                  onClick={close}
+                />
+              )}
+            </AnimatePresence>
 
-      {isExpanded && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 pointer-events-none">
+            {isExpanded && (
+              <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 pointer-events-none">
           <motion.div
             layoutId={shellId}
             transition={layoutSpring}
@@ -211,8 +218,11 @@ const DynamicProjectCard: React.FC<DynamicProjectCardProps> = ({ project }) => {
               </div>
             </motion.div>
           </motion.div>
-        </div>
-      )}
+              </div>
+            )}
+          </>,
+          document.body
+        )}
     </div>
   );
 };
