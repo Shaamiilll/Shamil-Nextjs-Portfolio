@@ -6,44 +6,82 @@ import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata = {
-  title: "Shamil Amiyan | Full Stack Developer & Entrepreneur",
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://shamil.info"),
+  title: {
+    default: "Shamil A (Shamil Amiyan) | Software Engineer & Full Stack Developer",
+    template: "%s | Shamil A (Shamil Amiyan)",
+  },
   description:
-    "Shamil Amiyan is a skilled Full Stack Developer & Entrepreneur specializing in MERN stack development, SaaS solutions, and e-commerce platforms.",
-  keywords:
-    "Shamil, Shamil A, Shamil Amiyan, Full Stack Developer, MERN Stack, Software Engineer, Entrepreneur, JavaScript, React, Next.js, Node.js, MongoDB, Express, Kerala Developer",
-  author: "Shamil Amiyan",
+    "Shamil A, also known as Shamil Amiyan, is a Software Engineer and Full Stack Developer from Kerala, India, specializing in MERN stack, Next.js, SaaS, and scalable web systems.",
+  keywords: [
+    "Shamil",
+    "Shamil A",
+    "Shamil Amiyan",
+    "Shamil developer",
+    "Shamil software engineer",
+    "Shamil info",
+    "Shamil Kerala",
+    "Full Stack Developer",
+    "MERN Stack",
+    "Software Engineer",
+    "Entrepreneur",
+    "JavaScript",
+    "React",
+    "Next.js",
+    "Node.js",
+    "MongoDB",
+    "Express",
+    "Kerala Developer",
+  ],
+  authors: [{ name: "Shamil Amiyan", url: "https://shamil.info" }],
+  creator: "Shamil Amiyan",
+  publisher: "Shamil Amiyan",
   alternates: {
     canonical: "https://shamil.info",
   },
   openGraph: {
-    title: "Shamil Amiyan | Full Stack Developer & Entrepreneur",
+    title: "Shamil A (Shamil Amiyan) | Software Engineer & Full Stack Developer",
     description:
-      "Shamil Amiyan is a skilled Full Stack Developer & Entrepreneur specializing in MERN stack development, SaaS solutions, and e-commerce platforms.",
+      "Official website of Shamil A (Shamil Amiyan) - Software Engineer & Full Stack Developer specializing in MERN stack, Next.js, SaaS, and scalable web systems.",
     type: "website",
     url: "https://shamil.info/",
+    locale: "en_US",
     images: [
       {
-        url: "https://shamil.info/og-image.jpg",
+        url: "/images/shamil-amiyan.jpg",
         width: 1200,
         height: 630,
-        alt: "Shamil Amiyan - Full Stack Developer",
+        alt: "Shamil A (Shamil Amiyan) - Software Engineer & Full Stack Developer",
       },
     ],
-    siteName: "Shamil Amiyan Portfolio",
+    siteName: "Shamil A (Shamil Amiyan)",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Shamil Amiyan | Full Stack Developer & Entrepreneur",
+    title: "Shamil A (Shamil Amiyan) | Software Engineer & Full Stack Developer",
     description:
-      "Shamil Amiyan is a skilled Full Stack Developer & Entrepreneur specializing in MERN stack development, SaaS solutions, and e-commerce platforms.",
-    images: ["https://shamil.info/og-image.jpg"],
-    creator: "@YourTwitterHandle",
+      "Official website of Shamil A (Shamil Amiyan) - Software Engineer & Full Stack Developer specializing in MERN stack, Next.js, SaaS, and scalable web systems.",
+    images: ["/images/shamil-amiyan.jpg"],
+    creator: "@shaamiilll",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
   icons: {
-    icon: "/favicon.png", 
+    icon: "/favicon.ico",
     shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.png", 
+    apple: "/apple-touch-icon.png",
   },
 };
 

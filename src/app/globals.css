@@ -80,6 +80,24 @@ body {
   scrollbar-width: none;
 }
 
+/* Fade the top and bottom edges of a scrollable area */
+.fade-scroll-y {
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    black 20px,
+    black calc(100% - 32px),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    black 20px,
+    black calc(100% - 32px),
+    transparent 100%
+  );
+}
+
 html {
   scroll-behavior: smooth;
 }
